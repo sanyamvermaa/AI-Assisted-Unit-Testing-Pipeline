@@ -1,0 +1,60 @@
+{
+  "problem_number": 3,
+  "mbpp_id": 604,
+  "task": "Write a function to reverse words in a given string.",
+  "reference_code": "def reverse_words(s):\r\n        return ' '.join(reversed(s.split()))",
+  "reference_tests": [
+    "assert reverse_words(\"python program\")==(\"program python\")",
+    "assert reverse_words(\"java language\")==(\"language java\")",
+    "assert reverse_words(\"indian man\")==(\"man indian\")"
+  ],
+  "configuration": {
+    "temperature": 0.2,
+    "num_problems": 5,
+    "test_framework": "unittest",
+    "coverage_tool": "coverage.py",
+    "criterion": "statement+branch",
+    "target_percent": 100.0,
+    "max_repair_rounds": 2
+  },
+  "code_generator": {
+    "model": "qwen/qwen3.8-27b:free",
+    "prompt": "You are the Code Generator Agent in an automated software-testing\nexperiment.\n\nProgramming problem:\nWrite a function to reverse words in a given string.\n\nGenerate a correct Python implementation for the problem.\n\nStrict output rules:\n- Return ONLY executable Python source code.\n- Do not use Markdown code fences.\n- Do not include explanations.\n- Do not include JSON.\n- Do not include safety classifications.\n- Do not include analysis.\n- Define the function(s) required by the problem.\n- Keep the implementation concise and self-contained.",
+    "generated_code": "def reverse_words(s: str) -> str:\n    return \" \".join(s.split()[::-1])"
+  },
+  "test_generator": {
+    "model": "qwen/qwen3.8-27b:free",
+    "prompt": "You are the Test Generator Agent in an AI-assisted unit-testing\n        pipeline.\n\n        Programming problem:\n        Write a function to reverse words in a given string.\n\n        Generated Python implementation:\n        def reverse_words(s: str) -> str:\nreturn \" \".join(s.split()[::-1])\n\n        Create a complete Python unittest module named test_solution.py.\n\n        Test-design requirements:\n        1. Use Python's built-in unittest framework.\n        2. Import the function(s) from solution.py.\n        3. Include normal/representative cases.\n        4. Include boundary cases where meaningful.\n        5. Include edge cases such as empty, singleton, negative,\n           duplicate, or unusual inputs when applicable.\n        6. For each important conditional, exercise both outcomes.\n        7. For loops, exercise zero iterations and one-or-more iterations\n           when meaningful.\n        8. Use strong assertions with expected outputs.\n        9. Do not test implementation details that are irrelevant to the\n           problem specification.\n        10. Aim for high statement and branch coverage.\n\n        Strict output rules:\n        - Return ONLY executable Python source code.\n        - Do not use Markdown code fences.\n        - Do not include explanations.\n        - Do not include JSON.\n        - Do not include safety classifications.",
+    "generated_tests": "import unittest\n\nfrom solution import reverse_words\n\n\nclass TestReverseWords(unittest.TestCase):\n    def test_empty_string(self):\n        self.assertEqual(reverse_words(\"\"), \"\")\n\n    def test_single_word(self):\n        self.assertEqual(reverse_words(\"hello\"), \"hello\")\n\n    def test_two_words(self):\n        self.assertEqual(reverse_words(\"hello world\"), \"world hello\")\n\n    def test_multiple_words(self):\n        self.assertEqual(\n            reverse_words(\"the quick brown fox\"),\n            \"fox brown quick the\"\n        )\n\n    def test_leading_and_trailing_spaces(self):\n        self.assertEqual(reverse_words(\"  hello world  \"), \"world hello\")\n\n    def test_multiple_spaces_between_words(self):\n        self.assertEqual(reverse_words(\"hello   world\"), \"world hello\")\n\n    def test_whitespace_only_string(self):\n        self.assertEqual(reverse_words(\"   \\t\\n  \"), \"\")\n\n    def test_mixed_whitespace_separators(self):\n        self.assertEqual(reverse_words(\"a\\tb\\nc\"), \"c b a\")\n\n    def test_words_with_punctuation(self):\n        self.assertEqual(reverse_words(\"hello, world!\"), \"world! hello,\")\n\n    def test_unicode_words(self):\n        self.assertEqual(reverse_words(\"héllo wörld\"), \"wörld héllo\")\n\n    def test_numeric_words(self):\n        self.assertEqual(reverse_words(\"1 2 3\"), \"3 2 1\")\n\n    def test_single_character_words(self):\n        self.assertEqual(reverse_words(\"a b c\"), \"c b a\")\n\n    def test_duplicate_words(self):\n        self.assertEqual(reverse_words(\"same same same\"), \"same same same\")\n\n    def test_returns_string(self):\n        self.assertIsInstance(reverse_words(\"hello world\"), str)\n\n\nif __name__ == \"__main__\":\n    unittest.main()"
+  },
+  "execution": {
+    "passed": true,
+    "verdict": "PASS",
+    "return_code": 0,
+    "tests_run": 14,
+    "statement_coverage": 100.0,
+    "branch_coverage": 100.0,
+    "execution_time_seconds": 0.12,
+    "missing_lines": [],
+    "missing_branches": [],
+    "stdout": "",
+    "stderr": "..............\n----------------------------------------------------------------------\nRan 14 tests in 0.000s\n\nOK\n",
+    "coverage_command_return_code": 0
+  },
+  "feedback_rounds": [
+    {
+      "round": 0,
+      "verdict": "PASS",
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "tests_run": 14
+    }
+  ],
+  "criterion_met": true,
+  "stage_timings": {
+    "code_generation_s": 10.007,
+    "test_generation_s": 61.391,
+    "test_execution_s": 0.12
+  },
+  "problem_runtime_seconds": 71.924
+}

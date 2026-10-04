@@ -1,0 +1,63 @@
+{
+  "configuration": {
+    "criterion": "statement+branch",
+    "target_percent": 100.0,
+    "max_repair_rounds": 2,
+    "temperature": 0.2,
+    "max_tokens_code": 1500,
+    "max_tokens_tests": 2500
+  },
+  "total_problems": 5,
+  "successful_executions": 2,
+  "pipeline_errors": 1,
+  "passed": 2,
+  "failed": 0,
+  "criterion_met": 2,
+  "average_statement_coverage": 100.0,
+  "average_branch_coverage": 100.0,
+  "total_tests": 22,
+  "total_runtime_seconds": 337.009,
+  "problems": [
+    {
+      "problem_number": 3,
+      "mbpp_id": 604,
+      "tests": 14,
+      "verdict": "PASS",
+      "passed": true,
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "criterion_met": true,
+      "feedback_rounds_used": 0,
+      "stage_timings": {
+        "code_generation_s": 10.007,
+        "test_generation_s": 61.391,
+        "test_execution_s": 0.12
+      },
+      "runtime_seconds": 71.924
+    },
+    {
+      "problem_number": 4,
+      "mbpp_id": 605,
+      "tests": 8,
+      "verdict": "PASS",
+      "passed": true,
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "criterion_met": true,
+      "feedback_rounds_used": 0,
+      "stage_timings": {
+        "code_generation_s": 13.961,
+        "test_generation_s": 248.363,
+        "test_execution_s": 0.108
+      },
+      "runtime_seconds": 262.663
+    },
+    {
+      "problem_number": 5,
+      "mbpp_id": 606,
+      "verdict": "PIPELINE_ERROR",
+      "error": "OpenRouterError: All OpenRouter model attempts failed:\nqwen/qwen3.8-27b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3.5-lightning:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3.5-content-safety:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-ultra-550b-a55b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\ngoogle/gemma-4-26b-a4b-it:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\ngoogle/gemma-4-31b-it:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-super-120b-a12b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi",
+      "runtime_seconds": 2.422
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "problem_number": 2,
+  "mbpp_id": 602,
+  "task": "Write a python function to find the first repeated character in a given string.",
+  "reference_code": "def first_repeated_char(str1):\r\n  for index,c in enumerate(str1):\r\n    if str1[:index+1].count(c) > 1:\r\n      return c \r\n  return \"None\"",
+  "reference_tests": [
+    "assert first_repeated_char(\"abcabc\") == \"a\"",
+    "assert first_repeated_char(\"abc\") == \"None\"",
+    "assert first_repeated_char(\"123123\") == \"1\""
+  ],
+  "configuration": {
+    "temperature": 0.2,
+    "num_problems": 5,
+    "test_framework": "unittest",
+    "coverage_tool": "coverage.py",
+    "criterion": "statement+branch",
+    "target_percent": 100.0,
+    "max_repair_rounds": 2
+  },
+  "code_generator": {
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "prompt": "You are the Code Generator Agent in an automated software-testing\nexperiment.\n\nProgramming problem:\nWrite a python function to find the first repeated character in a given string.\n\nGenerate a correct Python implementation for the problem.\n\nStrict output rules:\n- Return ONLY executable Python source code.\n- Do not use Markdown code fences.\n- Do not include explanations.\n- Do not include JSON.\n- Do not include safety classifications.\n- Do not include analysis.\n- Define the function(s) required by the problem.\n- Keep the implementation concise and self-contained.",
+    "generated_code": "def first_repeated_char(s):\n    seen = set()\n    for ch in s:\n        if ch in seen:\n            return ch\n        seen.add(ch)\n    return None"
+  },
+  "test_generator": {
+    "model": "qwen/qwen3.8-27b:free",
+    "prompt": "You are the Test Generator Agent in an AI-assisted unit-testing\n        pipeline.\n\n        Programming problem:\n        Write a python function to find the first repeated character in a given string.\n\n        Generated Python implementation:\n        def first_repeated_char(s):\nseen = set()\nfor ch in s:\n    if ch in seen:\n        return ch\n    seen.add(ch)\nreturn None\n\n        Create a complete Python unittest module named test_solution.py.\n\n        Test-design requirements:\n        1. Use Python's built-in unittest framework.\n        2. Import the function(s) from solution.py.\n        3. Include normal/representative cases.\n        4. Include boundary cases where meaningful.\n        5. Include edge cases such as empty, singleton, negative,\n           duplicate, or unusual inputs when applicable.\n        6. For each important conditional, exercise both outcomes.\n        7. For loops, exercise zero iterations and one-or-more iterations\n           when meaningful.\n        8. Use strong assertions with expected outputs.\n        9. Do not test implementation details that are irrelevant to the\n           problem specification.\n        10. Aim for high statement and branch coverage.\n\n        Strict output rules:\n        - Return ONLY executable Python source code.\n        - Do not use Markdown code fences.\n        - Do not include explanations.\n        - Do not include JSON.\n        - Do not include safety classifications.",
+    "generated_tests": "import unittest\n\nfrom solution import first_repeated_char\n\n\nclass TestFirstRepeatedChar(unittest.TestCase):\n    def test_empty_string_returns_none(self):\n        self.assertIsNone(first_repeated_char(\"\"))\n\n    def test_single_character_returns_none(self):\n        self.assertIsNone(first_repeated_char(\"a\"))\n\n    def test_no_repeated_characters_returns_none(self):\n        self.assertIsNone(first_repeated_char(\"abc\"))\n\n    def test_immediate_repeat_returns_character(self):\n        self.assertEqual(first_repeated_char(\"aa\"), \"a\")\n\n    def test_first_repeated_is_earliest_second_occurrence(self):\n        self.assertEqual(first_repeated_char(\"abcabc\"), \"a\")\n\n    def test_repeat_of_later_character_before_earlier_character(self):\n        self.assertEqual(first_repeated_char(\"abcba\"), \"b\")\n\n    def test_multiple_repeats_returns_first_repeated(self):\n        self.assertEqual(first_repeated_char(\"aabbcc\"), \"a\")\n\n    def test_all_same_returns_first_char(self):\n        self.assertEqual(first_repeated_char(\"aaaa\"), \"a\")\n\n    def test_repeat_of_space(self):\n        self.assertEqual(first_repeated_char(\"a b a\"), \" \")\n\n    def test_repeat_of_digit(self):\n        self.assertEqual(first_repeated_char(\"121\"), \"1\")\n\n    def test_repeat_of_unicode(self):\n        self.assertEqual(first_repeated_char(\"éé\"), \"é\")\n\n    def test_mixed_case_distinct_returns_none(self):\n        self.assertIsNone(first_repeated_char(\"AbC\"))\n\n    def test_mixed_case_repeat(self):\n        self.assertEqual(first_repeated_char(\"aAa\"), \"a\")\n\n    def test_two_chars_one_repeat(self):\n        self.assertEqual(first_repeated_char(\"bb\"), \"b\")\n\n    def test_long_no_repeat(self):\n        self.assertIsNone(first_repeated_char(\"abcdefg\"))\n\n    def test_repeat_at_end(self):\n        self.assertEqual(first_repeated_char(\"abcdefa\"), \"a\")\n\n\nif __name__ == \"__main__\":\n    unittest.main()"
+  },
+  "execution": {
+    "passed": true,
+    "verdict": "PASS",
+    "return_code": 0,
+    "tests_run": 16,
+    "statement_coverage": 100.0,
+    "branch_coverage": 100.0,
+    "execution_time_seconds": 0.101,
+    "missing_lines": [],
+    "missing_branches": [],
+    "stdout": "",
+    "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.000s\n\nOK\n",
+    "coverage_command_return_code": 0
+  },
+  "feedback_rounds": [
+    {
+      "round": 0,
+      "verdict": "PASS",
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "tests_run": 16
+    }
+  ],
+  "criterion_met": true,
+  "stage_timings": {
+    "code_generation_s": 23.573,
+    "test_generation_s": 45.221,
+    "test_execution_s": 0.101
+  },
+  "problem_runtime_seconds": 69.142
+}

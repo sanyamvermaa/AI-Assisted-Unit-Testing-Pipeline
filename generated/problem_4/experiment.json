@@ -1,0 +1,60 @@
+{
+  "problem_number": 4,
+  "mbpp_id": 605,
+  "task": "Write a function to check if the given integer is a prime number.",
+  "reference_code": "def prime_num(num):\r\n  if num >=1:\r\n   for i in range(2, num//2):\r\n     if (num % i) == 0:\r\n                return False\r\n     else:\r\n                return True\r\n  else:\r\n          return False",
+  "reference_tests": [
+    "assert prime_num(13)==True",
+    "assert prime_num(7)==True",
+    "assert prime_num(-1010)==False"
+  ],
+  "configuration": {
+    "temperature": 0.2,
+    "num_problems": 5,
+    "test_framework": "unittest",
+    "coverage_tool": "coverage.py",
+    "criterion": "statement+branch",
+    "target_percent": 100.0,
+    "max_repair_rounds": 2
+  },
+  "code_generator": {
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "prompt": "You are the Code Generator Agent in an automated software-testing\nexperiment.\n\nProgramming problem:\nWrite a function to check if the given integer is a prime number.\n\nGenerate a correct Python implementation for the problem.\n\nStrict output rules:\n- Return ONLY executable Python source code.\n- Do not use Markdown code fences.\n- Do not include explanations.\n- Do not include JSON.\n- Do not include safety classifications.\n- Do not include analysis.\n- Define the function(s) required by the problem.\n- Keep the implementation concise and self-contained.",
+    "generated_code": "def is_prime(n):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True"
+  },
+  "test_generator": {
+    "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    "prompt": "You are the Test Generator Agent in an AI-assisted unit-testing\n        pipeline.\n\n        Programming problem:\n        Write a function to check if the given integer is a prime number.\n\n        Generated Python implementation:\n        def is_prime(n):\nif n <= 1:\n    return False\nif n <= 3:\n    return True\nif n % 2 == 0 or n % 3 == 0:\n    return False\ni = 5\nwhile i * i <= n:\n    if n % i == 0 or n % (i + 2) == 0:\n        return False\n    i += 6\nreturn True\n\n        Create a complete Python unittest module named test_solution.py.\n\n        Test-design requirements:\n        1. Use Python's built-in unittest framework.\n        2. Import the function(s) from solution.py.\n        3. Include normal/representative cases.\n        4. Include boundary cases where meaningful.\n        5. Include edge cases such as empty, singleton, negative,\n           duplicate, or unusual inputs when applicable.\n        6. For each important conditional, exercise both outcomes.\n        7. For loops, exercise zero iterations and one-or-more iterations\n           when meaningful.\n        8. Use strong assertions with expected outputs.\n        9. Do not test implementation details that are irrelevant to the\n           problem specification.\n        10. Aim for high statement and branch coverage.\n\n        Strict output rules:\n        - Return ONLY executable Python source code.\n        - Do not use Markdown code fences.\n        - Do not include explanations.\n        - Do not include JSON.\n        - Do not include safety classifications.",
+    "generated_tests": "import unittest\nfrom solution import is_prime\n\nclass TestIsPrime(unittest.TestCase):\n    def test_non_positive(self):\n        self.assertFalse(is_prime(0))\n        self.assertFalse(is_prime(1))\n        self.assertFalse(is_prime(-1))\n        self.assertFalse(is_prime(-10))\n\n    def test_small_numbers(self):\n        self.assertTrue(is_prime(2))\n        self.assertTrue(is_prime(3))\n        self.assertFalse(is_prime(4))\n        self.assertFalse(is_prime(6))\n        self.assertFalse(is_prime(8))\n        self.assertFalse(is_prime(9))\n        self.assertFalse(is_prime(15))\n\n    def test_prime_numbers(self):\n        primes = [5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]\n        for p in primes:\n            with self.subTest(p=p):\n                self.assertTrue(is_prime(p))\n\n    def test_composite_numbers(self):\n        composites = [4,6,8,9,10,12,14,15,16,18,20,21,22,24,25,26,27,28,30,32,33,34,35,36,38,39,40,42,44,45,46,48,49,50,51,52,54,55,56,57,58,60,62,63,64,65,66,68,69,70,72,74,75,76,77,78,80,81,82,84,85,86,87,88,90,91,92,93,94,95,96,98,99,100]\n        for n in composites:\n            with self.subTest(n=n):\n                self.assertFalse(is_prime(n))\n\n    def test_boundary_values(self):\n        self.assertFalse(is_prime(0))\n        self.assertFalse(is_prime(1))\n        self.assertTrue(is_prime(2))\n        self.assertTrue(is_prime(3))\n        self.assertFalse(is_prime(4))\n\n    def test_negative_numbers(self):\n        for n in [-1, -2, -3, -10, -100]:\n            self.assertFalse(is_prime(n))\n\n    def test_large_numbers(self):\n        primes = [101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199]\n        for p in primes:\n            with self.subTest(p=p):\n                self.assertTrue(is_prime(p))\n\n        self.assertFalse(is_prime(100))\n        self.assertFalse(is_prime(1024))\n        self.assertFalse(is_prime(1048576))\n        self.assertFalse(is_prime(999984))\n\n    def test_loop_iteration_cases(self):\n        # zero iterations\n        self.assertTrue(is_prime(2))\n        self.assertTrue(is_prime(3))\n        self.assertTrue(is_prime(5))\n\n        # one or more iterations\n        self.assertFalse(is_prime(25))   # 5*5, loop runs once\n        self.assertFalse(is_prime(121))  # 11*11, loop runs twice\n        self.assertFalse(is_prime(221))  # 13*17, loop runs multiple times\n\nif __name__ == '__main__':\n    unittest.main()"
+  },
+  "execution": {
+    "passed": true,
+    "verdict": "PASS",
+    "return_code": 0,
+    "tests_run": 8,
+    "statement_coverage": 100.0,
+    "branch_coverage": 100.0,
+    "execution_time_seconds": 0.108,
+    "missing_lines": [],
+    "missing_branches": [],
+    "stdout": "",
+    "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n",
+    "coverage_command_return_code": 0
+  },
+  "feedback_rounds": [
+    {
+      "round": 0,
+      "verdict": "PASS",
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "tests_run": 8
+    }
+  ],
+  "criterion_met": true,
+  "stage_timings": {
+    "code_generation_s": 13.961,
+    "test_generation_s": 248.363,
+    "test_execution_s": 0.108
+  },
+  "problem_runtime_seconds": 262.663
+}

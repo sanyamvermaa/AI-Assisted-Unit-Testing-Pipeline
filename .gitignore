@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+.coverage
+coverage.json
+.DS_Store
+generated/*/coverage.json
+generated/*/error.txt
+generated/*/.coverage

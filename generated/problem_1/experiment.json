@@ -1,0 +1,60 @@
+{
+  "problem_number": 1,
+  "mbpp_id": 601,
+  "task": "Write a function to find the longest chain which can be formed from the given set of pairs.",
+  "reference_code": "class Pair(object): \r\n\tdef __init__(self, a, b): \r\n\t\tself.a = a \r\n\t\tself.b = b \r\ndef max_chain_length(arr, n): \r\n\tmax = 0\r\n\tmcl = [1 for i in range(n)] \r\n\tfor i in range(1, n): \r\n\t\tfor j in range(0, i): \r\n\t\t\tif (arr[i].a > arr[j].b and\r\n\t\t\t\tmcl[i] < mcl[j] + 1): \r\n\t\t\t\tmcl[i] = mcl[j] + 1\r\n\tfor i in range(n): \r\n\t\tif (max < mcl[i]): \r\n\t\t\tmax = mcl[i] \r\n\treturn max",
+  "reference_tests": [
+    "assert max_chain_length([Pair(5, 24), Pair(15, 25),Pair(27, 40), Pair(50, 60)], 4) == 3",
+    "assert max_chain_length([Pair(1, 2), Pair(3, 4),Pair(5, 6), Pair(7, 8)], 4) == 4",
+    "assert max_chain_length([Pair(19, 10), Pair(11, 12),Pair(13, 14), Pair(15, 16), Pair(31, 54)], 5) == 5"
+  ],
+  "configuration": {
+    "temperature": 0.2,
+    "num_problems": 5,
+    "test_framework": "unittest",
+    "coverage_tool": "coverage.py",
+    "criterion": "statement+branch",
+    "target_percent": 100.0,
+    "max_repair_rounds": 2
+  },
+  "code_generator": {
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "prompt": "You are the Code Generator Agent in an automated software-testing\nexperiment.\n\nProgramming problem:\nWrite a function to find the longest chain which can be formed from the given set of pairs.\n\nGenerate a correct Python implementation for the problem.\n\nStrict output rules:\n- Return ONLY executable Python source code.\n- Do not use Markdown code fences.\n- Do not include explanations.\n- Do not include JSON.\n- Do not include safety classifications.\n- Do not include analysis.\n- Define the function(s) required by the problem.\n- Keep the implementation concise and self-contained.",
+    "generated_code": "def find_longest_chain(pairs):\n    pairs.sort(key=lambda x: x[1])\n    count = 0\n    last_end = float('-inf')\n    for a, b in pairs:\n        if a > last_end:\n            count += 1\n            last_end = b\n    return count"
+  },
+  "test_generator": {
+    "model": "nvidia/nemotron-3.5-lightning:free",
+    "prompt": "You are the Test Generator Agent in an AI-assisted unit-testing\n        pipeline.\n\n        Programming problem:\n        Write a function to find the longest chain which can be formed from the given set of pairs.\n\n        Generated Python implementation:\n        def find_longest_chain(pairs):\npairs.sort(key=lambda x: x[1])\ncount = 0\nlast_end = float('-inf')\nfor a, b in pairs:\n    if a > last_end:\n        count += 1\n        last_end = b\nreturn count\n\n        Create a complete Python unittest module named test_solution.py.\n\n        Test-design requirements:\n        1. Use Python's built-in unittest framework.\n        2. Import the function(s) from solution.py.\n        3. Include normal/representative cases.\n        4. Include boundary cases where meaningful.\n        5. Include edge cases such as empty, singleton, negative,\n           duplicate, or unusual inputs when applicable.\n        6. For each important conditional, exercise both outcomes.\n        7. For loops, exercise zero iterations and one-or-more iterations\n           when meaningful.\n        8. Use strong assertions with expected outputs.\n        9. Do not test implementation details that are irrelevant to the\n           problem specification.\n        10. Aim for high statement and branch coverage.\n\n        Strict output rules:\n        - Return ONLY executable Python source code.\n        - Do not use Markdown code fences.\n        - Do not include explanations.\n        - Do not include JSON.\n        - Do not include safety classifications.",
+    "generated_tests": "import unittest\nfrom solution import find_longest_chain\n\n\nclass TestFindLongestChain(unittest.TestCase):\n\n    def test_empty_list(self):\n        self.assertEqual(find_longest_chain([]), 0)\n\n    def test_singleton(self):\n        self.assertEqual(find_longest_chain([[1, 2]]), 1)\n\n    def test_basic_chain(self):\n        pairs = [[1, 2], [3, 4], [5, 6]]\n        self.assertEqual(find_longest_chain(pairs), 3)\n\n    def test_no_chain_possible(self):\n        pairs = [[1, 2], [2, 3]]\n        self.assertEqual(find_longest_chain(pairs), 1)\n\n    def test_negative_numbers(self):\n        pairs = [[-3, -1], [-2, 0], [1, 2]]\n        self.assertEqual(find_longest_chain(pairs), 2)\n\n    def test_duplicate_pairs(self):\n        pairs = [[1, 2], [1, 2], [1, 2]]\n        self.assertEqual(find_longest_chain(pairs), 1)\n\n    def test_unordered_input(self):\n        pairs = [[3, 4], [1, 2]]"
+  },
+  "execution": {
+    "passed": true,
+    "verdict": "PASS",
+    "return_code": 0,
+    "tests_run": 7,
+    "statement_coverage": 100.0,
+    "branch_coverage": 100.0,
+    "execution_time_seconds": 0.158,
+    "missing_lines": [],
+    "missing_branches": [],
+    "stdout": "",
+    "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n",
+    "coverage_command_return_code": 0
+  },
+  "feedback_rounds": [
+    {
+      "round": 0,
+      "verdict": "PASS",
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "tests_run": 7
+    }
+  ],
+  "criterion_met": true,
+  "stage_timings": {
+    "code_generation_s": 56.494,
+    "test_generation_s": 223.997,
+    "test_execution_s": 0.158
+  },
+  "problem_runtime_seconds": 281.049
+}
