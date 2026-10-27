@@ -1,11 +1,12 @@
 """MBPP dataset loader."""
 
-from typing import Any, Dict, List
+from collections.abc import Mapping
+from typing import Any
 
 from datasets import load_dataset
 
 
-def _first(record: Dict[str, Any], keys, default=None):
+def _first(record: Mapping[Any, Any], keys, default=None):
     for key in keys:
         if key in record and record[key] is not None:
             return record[key]
@@ -15,8 +16,8 @@ def _first(record: Dict[str, Any], keys, default=None):
 def load_mbpp_problems(
     split: str = "train",
     limit: int = 5,
-    skip_ids: List[int] = None,
-) -> List[Dict[str, Any]]:
+    skip_ids: list[int] | None = None,
+) -> list[dict[str, Any]]:
     """Load MBPP records and normalize them for the pipeline.
 
     skip_ids: MBPP task IDs to exclude; the next available problem fills the gap.
@@ -26,6 +27,8 @@ def load_mbpp_problems(
 
     problems = []
     for record in dataset:
+        if not isinstance(record, Mapping):
+            continue
         mbpp_id = _first(record, ["task_id", "id"])
         if mbpp_id in skip_set:
             continue

@@ -2,7 +2,9 @@
 
 import re
 
-_FENCE = re.compile(r"```[a-zA-Z0-9_+-]*\s*\n(.*?)\n?```", re.DOTALL)
+_FENCE = re.compile(
+    r"```[a-zA-Z0-9_+-]*\s*\n((?:(?!\n?```)[\s\S])*)\n?```"
+)
 
 
 def strip_code_fences(text: str) -> str:

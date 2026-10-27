@@ -4,8 +4,35 @@ __pycache__/
 *.pyc
 .env
 .coverage
+.coverage.*
 coverage.json
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
 .DS_Store
 generated/*/coverage.json
+generated/*/__pycache__/
+*.log
+
+# Local editor settings
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+
+# LaTeX build artifacts inside report/ (keep report.tex and report.pdf)
+report/*.aux
+report/*.bbl
+report/*.bcf
+report/*.blg
+report/*.fdb_latexmk
+report/*.fls
+report/*.lof
+report/*.lot
+report/*.out
+report/*.run.xml
+report/*.synctex.gz
+report/*.toc
+
 generated/*/error.txt
-generated/*/.coverage
