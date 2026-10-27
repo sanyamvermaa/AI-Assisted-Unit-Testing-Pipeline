@@ -1,23 +1,58 @@
 {
   "configuration": {
+    "temperature": 0.2,
+    "num_problems": 5,
+    "test_framework": "unittest",
+    "coverage_tool": "coverage.py",
     "criterion": "statement+branch",
     "target_percent": 100.0,
-    "max_repair_rounds": 2,
-    "temperature": 0.2,
-    "max_tokens_code": 1500,
-    "max_tokens_tests": 2500
+    "max_repair_rounds": 2
   },
   "total_problems": 5,
-  "successful_executions": 2,
-  "pipeline_errors": 1,
-  "passed": 2,
+  "successful_executions": 5,
+  "pipeline_errors": 0,
+  "passed": 5,
   "failed": 0,
-  "criterion_met": 2,
+  "criterion_met": 5,
   "average_statement_coverage": 100.0,
   "average_branch_coverage": 100.0,
-  "total_tests": 22,
-  "total_runtime_seconds": 337.009,
+  "total_tests": 56,
+  "total_runtime_seconds": 926.913,
   "problems": [
+    {
+      "problem_number": 1,
+      "mbpp_id": 601,
+      "tests": 7,
+      "verdict": "PASS",
+      "passed": true,
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "criterion_met": true,
+      "feedback_rounds_used": 0,
+      "stage_timings": {
+        "code_generation_s": 56.494,
+        "test_generation_s": 223.997,
+        "test_execution_s": 0.158
+      },
+      "runtime_seconds": 281.049
+    },
+    {
+      "problem_number": 2,
+      "mbpp_id": 602,
+      "tests": 16,
+      "verdict": "PASS",
+      "passed": true,
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "criterion_met": true,
+      "feedback_rounds_used": 0,
+      "stage_timings": {
+        "code_generation_s": 23.573,
+        "test_generation_s": 45.221,
+        "test_execution_s": 0.101
+      },
+      "runtime_seconds": 69.142
+    },
     {
       "problem_number": 3,
       "mbpp_id": 604,
@@ -54,10 +89,20 @@
     },
     {
       "problem_number": 5,
-      "mbpp_id": 606,
-      "verdict": "PIPELINE_ERROR",
-      "error": "OpenRouterError: All OpenRouter model attempts failed:\nqwen/qwen3.8-27b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3.5-lightning:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3.5-content-safety:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-ultra-550b-a55b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\ngoogle/gemma-4-26b-a4b-it:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\ngoogle/gemma-4-31b-it:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi\nnvidia/nemotron-3-super-120b-a12b:free: HTTP 429: {\"error\":{\"message\":\"Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day\",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Limit\":\"50\",\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1791158400000\"},\"limit_source\":\"openrouter_free_tier_daily\",\"remedy_hi",
-      "runtime_seconds": 2.422
+      "mbpp_id": 605,
+      "tests": 11,
+      "verdict": "PASS",
+      "passed": true,
+      "statement_coverage": 100.0,
+      "branch_coverage": 100.0,
+      "criterion_met": true,
+      "feedback_rounds_used": 0,
+      "stage_timings": {
+        "code_generation_s": 15.319,
+        "test_generation_s": 226.444,
+        "test_execution_s": 0.108
+      },
+      "runtime_seconds": 242.135
     }
   ]
 }
